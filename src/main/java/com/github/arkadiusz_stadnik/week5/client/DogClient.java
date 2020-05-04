@@ -16,21 +16,29 @@ import java.util.stream.Stream;
 @Controller
 public class DogClient {
 
-    private RestTemplate restTemplate ;
+    private RestTemplate restTemplate;
 
     public DogClient() {
         this.restTemplate = new RestTemplate();
     }
 
 
-    @EventListener(ApplicationReadyEvent.class)
     private void getDogs() {
         MultiValueMap<String, String> headers = new HttpHeaders();
-        headers.add("amount","2");
+        headers.add("amount", "2");
         HttpEntity httpEntity = new HttpEntity(headers);
 
         ResponseEntity<Dog[]> entity = restTemplate.exchange("http://localhost:8080/dogs", HttpMethod.GET,
                 httpEntity, Dog[].class);
         Stream.of(entity.getBody()).forEach(System.out::println);
+    }
+@EventListener(ApplicationReadyEvent.class)
+    private void addDog() {
+        Dog dog = new Dog("Khalif", "wilczur");
+        HttpEntity httpEntity = new HttpEntity(dog);
+        ResponseEntity entity = restTemplate.exchange("http://localhost:8080/dogs",
+                HttpMethod.POST,
+                httpEntity
+                , Void.class);
     }
 }
