@@ -1,4 +1,4 @@
-package com.github.arkadiusz_stadnik.week5;
+package com.github.arkadiusz_stadnik.week5.client;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;

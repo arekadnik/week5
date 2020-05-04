@@ -1,5 +1,5 @@
 
-package com.github.arkadiusz_stadnik.week5;
+package com.github.arkadiusz_stadnik.week5.client;
 
 import java.util.HashMap;
 import java.util.Map;
