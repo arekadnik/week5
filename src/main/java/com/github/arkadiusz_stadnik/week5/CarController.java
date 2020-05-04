@@ -7,8 +7,10 @@ import org.springframework.web.client.RestTemplate;
 public class CarController {
     public CarController() {
         RestTemplate restTemplate = new RestTemplate();
-        String forObject = restTemplate.getForObject("https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=6",
-                String.class);
-        System.out.println(forObject);
+        AnimalFact[] forObject = restTemplate.getForObject("https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=6",
+                AnimalFact[].class);
+        for (AnimalFact a:forObject) {
+            System.out.println(a + "\n");
+        }
     }
 }
