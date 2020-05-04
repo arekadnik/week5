@@ -10,7 +10,7 @@ public class CarController {
         AnimalFact[] forObject = restTemplate.getForObject("https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=6",
                 AnimalFact[].class);
         for (AnimalFact a:forObject) {
-            System.out.println(a + "\n");
+            System.out.println(a.getText() + "\n");
         }
     }
 }
